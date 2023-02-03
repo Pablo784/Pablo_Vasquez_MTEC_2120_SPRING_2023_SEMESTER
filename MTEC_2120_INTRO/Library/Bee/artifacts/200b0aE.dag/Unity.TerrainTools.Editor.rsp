@@ -114,7 +114,8 @@
 -define:ENABLE_TERRAIN
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
--define:ENABLE_LEGACY_INPUT_MANAGER
+-define:ENABLE_INPUT_SYSTEM
+-define:STARTER_ASSETS_PACKAGES_CHECKED
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.Graphs.dll"
@@ -337,6 +338,7 @@
 -r:"/Users/student/Pablo_Vasquez_MTEC_2120_SPRING_2023_SEMESTER/Pvasquez/MTEC_2120_INTRO/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll"
 -r:"/Users/student/Pablo_Vasquez_MTEC_2120_SPRING_2023_SEMESTER/Pvasquez/MTEC_2120_INTRO/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/EditorAssetResources/Unity.VisualScripting.TextureAssets.dll"
 -r:"/Users/student/Pablo_Vasquez_MTEC_2120_SPRING_2023_SEMESTER/Pvasquez/MTEC_2120_INTRO/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Assets/StarterAssets/Editor/PackageChecker/StarterAssetsPackageChecker.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/Unity.TerrainTools.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.TestRunner.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.ref.dll"
