@@ -10,36 +10,39 @@ public class MyOrbitScript : MonoBehaviour
 
     public float rotationAngle = 1.0f;
 
+
+    Transform tran;
+
+
+
+    private void Start()
+    {
+        tran.position = new Vector3(0, 1, 2);
+    }
+
     // private float countdown = 1.0f;
 
 
     // Update is called once per frame
     void Update()
     {
-        // CountdownToColorChange();
-        Renderer rend = sun.GetComponent<Renderer>();
-        rend.material.color = sun.GetComponent<BallChangingColor>().GetRandomColor();
+        CountdownToColorChange();
+
+    }
+    public void RotateAroundSun()
+    {
         transform.RotateAround(sun.transform.position, rotationAxis, rotationAngle);
+        {
 
+        }
     }
-}
+    public void CountdownToColorChange()
+    {
 
-/*
-public void CountdownToColorChange()
-{
-    if (CountdownToColorChange < 0)
-    {
-        Renderer rend = sun.GetComponent<Renderer>();
-        rend.material.color = sun.GetComponent<BallChangingColor>().GetRandomColor()
-        countdown = 1.0f;
-  }
-    else
-    {
-        countdown -= Time.deltaTime;
+    
+        
     }
-}
-     }     
-*/
 
-// I Was following along the zoom recording for 2/10's class. This script makes your gameobjects orbit like a planet and
-// Changing the color of the sun every second instead of every frame. A timer was also added
+   
+
+// I Was following along the zoom recording for 2/10's and 2/17's class. 
