@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sun : MonoBehaviour
 {
     public delegate void EnableGravity();
-    public event EnableGravity OnEnableGravity;
+    public static event EnableGravity OnEnableGravity;
 
 
     public void Update()
