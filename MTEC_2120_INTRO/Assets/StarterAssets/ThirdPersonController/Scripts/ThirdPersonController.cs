@@ -161,6 +161,7 @@ namespace StarterAssets
             Move();
         }
 
+
         private void LateUpdate()
         {
             CameraRotation();
@@ -278,6 +279,31 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
+
+        private void ShootCheck()
+        {
+            // Handle the logic
+            if (_input.shoot) {
+                { 
+            Debug.Log("You are clicking on the mouse button");
+                    Fire();
+                
+            }
+        }
+
+            private void Fire()
+            {
+                var transform = this.transform;
+                var newProjectile = Instantiate(projectile);
+                newProjectile.transform.position = transform.postion + transform.forward * 0.6f + transform.up * 1.2;
+                newProjectile.transform.rotation = transform.rotation;
+                const int size = 1;
+                newProjectile.transform.localScale *= size;
+                newProjectile.GetComponent<Rigidbody>().mass = Mathf.Pow(size, 3);
+                newProjectile.GetComponent<Rigidbody>().AddForce = (transform.forward * 20f, ForceMode.Impulse);
+                newProjectile.GetComponent<MeshRenderer>().material.color = new Color(Random.value, Random.value, 1.0f);
+            }
+
 
         private void JumpAndGravity()
         {

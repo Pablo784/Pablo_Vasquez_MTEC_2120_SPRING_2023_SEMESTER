@@ -19,11 +19,13 @@ public class InstatiatePrefab : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space));
-        Debug.Log("Space bar was pressed");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space bar was pressed");
+        }
     }
+    // public void Rotate;
 
-    public void Rotate
 
 
 

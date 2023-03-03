@@ -39,10 +39,22 @@ public class MyOrbitScript : MonoBehaviour
     public void CountdownToColorChange()
     {
 
-    
+    }
         
+        /*
+        if (countdown < 0)
+        {
+            RenderBuffer rend = sun.GetComponent<Renderer>();
+            rend.material.color = sun.GetComponent<MyFirstScript>().GetRandomColor();
+            countdown = 1.0f;
+        }
+        else
+        {
+            countdown -= Time.deltaTime;
+        }
+        */
     }
 
-   
+  
 
 // I Was following along the zoom recording for 2/10's and 2/17's class. 

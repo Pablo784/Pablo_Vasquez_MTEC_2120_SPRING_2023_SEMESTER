@@ -11,6 +11,7 @@ public class RotateAroundSun : MonoBehaviour
     float rotationAngle = 10;
 
     public float speed = 10;
+    public GameObject sun;
 
 
     public void Start()
@@ -22,7 +23,7 @@ public class RotateAroundSun : MonoBehaviour
 
     public void RotateAboutAxis()
     {
-        transform.RotateAround(this.transform.position, rotationAxis, rotationAngle * speed / 10);
+        transform.RotateAround(this.transform.position, rotationAxis, rotationAngle * speed / 10f);
 
     }
     public void Rotate()

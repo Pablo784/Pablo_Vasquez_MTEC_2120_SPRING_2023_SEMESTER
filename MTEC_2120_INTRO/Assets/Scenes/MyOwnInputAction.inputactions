@@ -1,0 +1,34 @@
+{
+    "name": "MyOwnInputAction",
+    "maps": [
+        {
+            "name": "Play",
+            "id": "33098d3d-e44e-40bc-a522-72c18fd206b5",
+            "actions": [
+                {
+                    "name": "Walk",
+                    "type": "Button",
+                    "id": "024be3cd-ec11-4f5d-aecb-4c70782fb237",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "57a21857-1c81-4129-9ddb-88328b39d3e7",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
