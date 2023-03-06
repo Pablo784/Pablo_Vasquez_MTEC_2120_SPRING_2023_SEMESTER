@@ -135,7 +135,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-
+            
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -160,7 +160,6 @@ namespace StarterAssets
             GroundedCheck();
             Move();
         }
-
 
         private void LateUpdate()
         {
@@ -280,139 +279,113 @@ namespace StarterAssets
             }
         }
 
-        private void ShootCheck()
+        private void JumpAndGravity()
         {
-            // Handle the logic
-            if (_input.shoot) {
-                {
-                    Debug.Log("You are clicking on the mouse button");
-                    Fire();
+            if (Grounded)
+            {
+                // reset the fall timeout timer
+                _fallTimeoutDelta = FallTimeout;
 
+                // update animator if using character
+                if (_hasAnimator)
+                {
+                    _animator.SetBool(_animIDJump, false);
+                    _animator.SetBool(_animIDFreeFall, false);
                 }
-            }
 
-            private void Fire()
-            {
-                var transform = this.transform;
-                var newProjectile = Instantiate(projectile);
-                newProjectile.transform.position = transform.postion + transform.forward * 0.6f + transform.up * 1.2;
-                newProjectile.transform.rotation = transform.rotation;
-                const int size = 1;
-                newProjectile.transform.localScale *= size;
-                newProjectile.GetComponent<Rigidbody>().mass = Mathf.Pow(size, 3);
-                newProjectile.GetComponent<Rigidbody>().AddForce = (transform.forward * 20f, ForceMode.Impulse);
-                newProjectile.GetComponent<MeshRenderer>().material.color = new Color(Random.value, Random.value, 1.0f);
-            }
-
-
-            private void JumpAndGravity()
-            {
-                if (Grounded)
+                // stop our velocity dropping infinitely when grounded
+                if (_verticalVelocity < 0.0f)
                 {
-                    // reset the fall timeout timer
-                    _fallTimeoutDelta = FallTimeout;
+                    _verticalVelocity = -2f;
+                }
+
+                // Jump
+                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                {
+                    // the square root of H * -2 * G = how much velocity needed to reach desired height
+                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
                     // update animator if using character
                     if (_hasAnimator)
                     {
-                        _animator.SetBool(_animIDJump, false);
-                        _animator.SetBool(_animIDFreeFall, false);
+                        _animator.SetBool(_animIDJump, true);
                     }
+                }
 
-                    // stop our velocity dropping infinitely when grounded
-                    if (_verticalVelocity < 0.0f)
-                    {
-                        _verticalVelocity = -2f;
-                    }
+                // jump timeout
+                if (_jumpTimeoutDelta >= 0.0f)
+                {
+                    _jumpTimeoutDelta -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                // reset the jump timeout timer
+                _jumpTimeoutDelta = JumpTimeout;
 
-                    // Jump
-                    if (_input.jump && _jumpTimeoutDelta <= 0.0f)
-                    {
-                        // the square root of H * -2 * G = how much velocity needed to reach desired height
-                        _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
-                        // update animator if using character
-                        if (_hasAnimator)
-                        {
-                            _animator.SetBool(_animIDJump, true);
-                        }
-                    }
-
-                    // jump timeout
-                    if (_jumpTimeoutDelta >= 0.0f)
-                    {
-                        _jumpTimeoutDelta -= Time.deltaTime;
-                    }
+                // fall timeout
+                if (_fallTimeoutDelta >= 0.0f)
+                {
+                    _fallTimeoutDelta -= Time.deltaTime;
                 }
                 else
                 {
-                    // reset the jump timeout timer
-                    _jumpTimeoutDelta = JumpTimeout;
-
-                    // fall timeout
-                    if (_fallTimeoutDelta >= 0.0f)
+                    // update animator if using character
+                    if (_hasAnimator)
                     {
-                        _fallTimeoutDelta -= Time.deltaTime;
-                    }
-                    else
-                    {
-                        // update animator if using character
-                        if (_hasAnimator)
-                        {
-                            _animator.SetBool(_animIDFreeFall, true);
-                        }
-                    }
-
-                    // if we are not grounded, do not jump
-                    _input.jump = false;
-                }
-
-                // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-                if (_verticalVelocity < _terminalVelocity)
-                {
-                    _verticalVelocity += Gravity * Time.deltaTime;
-                }
-            }
-
-            private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-            {
-                if (lfAngle < -360f) lfAngle += 360f;
-                if (lfAngle > 360f) lfAngle -= 360f;
-                return Mathf.Clamp(lfAngle, lfMin, lfMax);
-            }
-
-            private void OnDrawGizmosSelected()
-            {
-                Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
-                Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
-
-                if (Grounded) Gizmos.color = transparentGreen;
-                else Gizmos.color = transparentRed;
-
-                // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
-                Gizmos.DrawSphere(
-                    new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
-                    GroundedRadius);
-            }
-
-            private void OnFootstep(AnimationEvent animationEvent)
-            {
-                if (animationEvent.animatorClipInfo.weight > 0.5f)
-                {
-                    if (FootstepAudioClips.Length > 0)
-                    {
-                        var index = Random.Range(0, FootstepAudioClips.Length);
-                        AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                        _animator.SetBool(_animIDFreeFall, true);
                     }
                 }
+
+                // if we are not grounded, do not jump
+                _input.jump = false;
             }
 
-            private void OnLand(AnimationEvent animationEvent)
+            // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+            if (_verticalVelocity < _terminalVelocity)
             {
-                if (animationEvent.animatorClipInfo.weight > 0.5f)
+                _verticalVelocity += Gravity * Time.deltaTime;
+            }
+        }
+
+        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+        {
+            if (lfAngle < -360f) lfAngle += 360f;
+            if (lfAngle > 360f) lfAngle -= 360f;
+            return Mathf.Clamp(lfAngle, lfMin, lfMax);
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
+            Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
+
+            if (Grounded) Gizmos.color = transparentGreen;
+            else Gizmos.color = transparentRed;
+
+            // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
+            Gizmos.DrawSphere(
+                new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
+                GroundedRadius);
+        }
+
+        private void OnFootstep(AnimationEvent animationEvent)
+        {
+            if (animationEvent.animatorClipInfo.weight > 0.5f)
+            {
+                if (FootstepAudioClips.Length > 0)
                 {
-                    AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    var index = Random.Range(0, FootstepAudioClips.Length);
+                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
                 }
+            }
+        }
+
+        private void OnLand(AnimationEvent animationEvent)
+        {
+            if (animationEvent.animatorClipInfo.weight > 0.5f)
+            {
+                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
         }
     }
