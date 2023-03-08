@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HW_5 : MonoBehaviour
+public class HW5 : MonoBehaviour
 {
 
 
@@ -25,5 +25,6 @@ public class HW_5 : MonoBehaviour
         }
     }
 }
+
 
 // ON 3/3, THE PROFESSOR WENT OVER THE 5TH HOMEWORK ASSIGNMENT
