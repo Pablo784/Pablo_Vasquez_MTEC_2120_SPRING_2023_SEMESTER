@@ -1,1 +1,5 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/3rdPerson+Fly/Scenes/3rdPerson+Fly.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0

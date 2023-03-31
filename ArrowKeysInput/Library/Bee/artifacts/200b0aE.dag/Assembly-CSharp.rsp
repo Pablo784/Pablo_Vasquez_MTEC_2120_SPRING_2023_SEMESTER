@@ -338,6 +338,13 @@
 -r:"Library/Bee/artifacts/200b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/200b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/3rdPerson+Fly/Scripts/LevelScripts/ControlsTutorial.cs"
+"Assets/3rdPerson+Fly/Scripts/LevelScripts/HintManagement.cs"
+"Assets/3rdPerson+Fly/Scripts/LevelScripts/ThirdPersonOrbitCamBasic.cs"
+"Assets/3rdPerson+Fly/Scripts/PlayerScripts/AimBehaviourBasic.cs"
+"Assets/3rdPerson+Fly/Scripts/PlayerScripts/BasicBehaviour.cs"
+"Assets/3rdPerson+Fly/Scripts/PlayerScripts/FlyBehaviour.cs"
+"Assets/3rdPerson+Fly/Scripts/PlayerScripts/MoveBehaviour.cs"
 "Assets/Scripts/Bullet.cs"
 -langversion:9.0
 
