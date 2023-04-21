@@ -344,6 +344,7 @@
 "Assets/3rdPerson+Fly/Scripts/PlayerScripts/AimBehaviourBasic.cs"
 "Assets/3rdPerson+Fly/Scripts/PlayerScripts/BasicBehaviour.cs"
 "Assets/3rdPerson+Fly/Scripts/PlayerScripts/FlyBehaviour.cs"
+"Assets/3rdPerson+Fly/Scripts/PlayerScripts/Health-Bar.cs"
 "Assets/3rdPerson+Fly/Scripts/PlayerScripts/MoveBehaviour.cs"
 "Assets/Scripts/Bullet.cs"
 -langversion:9.0
