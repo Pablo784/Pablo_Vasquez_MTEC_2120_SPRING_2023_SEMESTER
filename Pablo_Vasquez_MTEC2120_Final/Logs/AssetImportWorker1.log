@@ -1468,3 +1468,15 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 7925.008451 seconds.
+  path: Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/Resources/personal/actionTreeBackground.png
+  artifactKey: Guid(ce5f11cd993284c4f9c54f854bdc8c9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.unity.inputsystem/InputSystem/Editor/AssetEditor/Resources/personal/actionTreeBackground.png using Guid(ce5f11cd993284c4f9c54f854bdc8c9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d78269da31ac8cbdcdfd5ca9e8c11aa') in 2.144665 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.031407 seconds.
+  path: Assets/TerrainSampleAssets/TerrainLayers/Grass_A_TerrainLayer.terrainlayer
+  artifactKey: Guid(130d104513b29bd44ae9c5b3915f4134) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TerrainSampleAssets/TerrainLayers/Grass_A_TerrainLayer.terrainlayer using Guid(130d104513b29bd44ae9c5b3915f4134) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7747d1155b4d8dbdb1104c8fa4c57e0f') in 0.206781 seconds 
