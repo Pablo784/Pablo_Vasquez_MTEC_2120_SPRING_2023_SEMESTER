@@ -414,6 +414,7 @@
 "Assets/Reaktion/Reaktion/Utility/Spawner.cs"
 "Assets/Reaktion/Reaktion/Utility/TurbulentMotion.cs"
 "Assets/Reaktion/Reaktion/Utility/VariableMotion.cs"
+"Assets/Scenes/Scripts/MyOrbitScript.cs"
 "Assets/StarterAssets/InputSystem/StarterAssetsInputs.cs"
 "Assets/StarterAssets/Mobile/Scripts/CanvasInputs/UICanvasControllerInput.cs"
 "Assets/StarterAssets/Mobile/Scripts/Utilities/MobileDisableAutoSwitchControls.cs"
