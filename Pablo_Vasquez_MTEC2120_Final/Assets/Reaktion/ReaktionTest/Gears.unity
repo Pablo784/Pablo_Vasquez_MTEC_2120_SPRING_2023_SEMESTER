@@ -11681,7 +11681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fce67a8a2644610b056a44ea519c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 100000, guid: bfced4461972b49108f6aafe24bf75f6, type: 3}
+  prefab: {fileID: 100000, guid: 03d8473e3b50e4d0a8a967eefe43d8f1, type: 3}
   maxParticles: 100
 --- !u!1 &1144881631
 GameObject:
